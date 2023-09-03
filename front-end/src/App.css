@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x:hidden;
+  box-sizing: border-box;
+}
+.contents{
+  height:100vh;
+  width:100%;
+  background:#1a1a1a;
+  padding:3rem 15rem;
+  color:white;
+}
+
+h1{
+  font-size:24px;
+  color:#0b7df0;
+}
+
+.userlabel{
+  margin-top:5px;
+  font-size:15px;
+  display:block;
+  margin-bottom:10px;
+  color:#bbb7a5;
+}
+.userInput{
+  padding:15px;
+  width:91%;  
+  background:#2a2a2a;
+  color:#bbb7a5;
+  border:none;
+  border-radius:10px;
+  margin-left:-2px;
+}
+.userbtn{
+  padding:8px 14px;
+  border:none;
+  border-radius:10px;
+  background: #2ebc5f;
+  color:white;
+  position:absolute;
+  margin-left:51rem;
+  cursor:pointer;
+  margin-top:6.5px;
+}
+.input-group{
+  display:flex;
+  position: relative;
+}
+.searchIcon{
+  position:absolute;
+  margin-left:8px;
+  margin-top:13px;
+  font-size:24px;
+}
+table{
+  padding:15px 0 0 0;
+  border-collapse: separate;
+  width: 92%;
+}
+thead{
+  text-align:left;
+}
+td{
+  margin-left:1rem;
+}
+th, td {
+  padding: 15px; 
+  margin:0;
+  border:none;
+}
+
+tr:nth-child(even){
+  background:#2a2a2a;
+}
+table thead tr th{
+  color:#b557e4;
+  border-bottom: 1px solid #bbb7a5 !important;
+}

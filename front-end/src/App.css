@@ -15,6 +15,10 @@
   color:white;
 }
 
+.errormessage{
+  color:red;
+}
+
 h1{
   font-size:24px;
   color:#0b7df0;

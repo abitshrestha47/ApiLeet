@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +7,8 @@ const Contents = () => {
   const [username, setUsername] = useState("");
   const [gotData, setGotData] = useState([]);
   const [showIcon, setShowIcon] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error,setError]=useState(null);
   const handleInputChange=(e)=>{
     setUsername(e.target.value);
 
@@ -20,17 +22,42 @@ const Contents = () => {
       setShowIcon(true);
     }
   }
+  useEffect(() => {
+    if (username === "") {
+      resetData();
+    }
+  }, [username]);
+  const resetData=()=>{
+    setGotData([]);
+    setError(null);
+  }
   const getUserData = async () => {
     try {
+      setIsLoading(true);
+      resetData();
       const response = await axios.get(`http://localhost:3000/getuserdata`, {
         params: {
           username,
         },
       });
-      console.log(response.data);
-      setGotData(response.data);
+      const responsedata=response.data;
+      console.log(responsedata);
+      if(responsedata.length===0){
+        setError('No data available or empty for this user.')
+      }
+      else{
+        setGotData(responsedata);
+      }
     } catch (err) {
       console.log(err.message);
+      if(err.message==='Request failed with status code 500'){
+        setError('User not found');
+      }
+      if(err.message==='Network Error'){
+        setError("Internet is not available");
+      }
+    }finally {
+      setIsLoading(false); 
     }
   };
   return (
@@ -51,6 +78,9 @@ const Contents = () => {
           Show
         </button>
       </div>
+      <br />
+      {isLoading?<p>Loading...</p>:''}
+      {error && <p className="errormessage">{error}</p>}
       {gotData!=""?
            <table cellSpacing={0}>
            <thead>
@@ -65,7 +95,7 @@ const Contents = () => {
                ? gotData.map((item, index) => (
                    <tr key={index}>
                      <td>{index + 1}</td>
-                     <td>{item.title}</td>
+                     <td>{item}</td>
                      {/* Render more table cells based on your data structure */}
                    </tr>
                  ))

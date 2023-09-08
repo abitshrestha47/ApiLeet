@@ -101,6 +101,9 @@ table thead tr th {
   color: #b557e4;
   border-bottom: 1px solid #bbb7a5 !important;
 }
+.sometime{
+  color:#b557e4;
+}
 
 /* Media Queries */
 

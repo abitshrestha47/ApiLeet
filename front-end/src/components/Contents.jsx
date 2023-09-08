@@ -41,7 +41,7 @@ const Contents = () => {
         },
       });
       const responsedata=response.data;
-      console.log(responsedata);
+      // console.log(responsedata);
       if(responsedata.length===0){
         setError('No data available or empty for this user.')
       }

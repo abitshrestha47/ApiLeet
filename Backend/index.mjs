@@ -20,18 +20,6 @@ app.get("/getuserdata", async (req, res) => {
   }
 });
 var recentSubmissions;
-//     const user = await leetcode.user(username);
-//     recentSubmissions = user.recentSubmissionList;
-//     console.log(recentSubmissions);
-//     // showSubmisions();
-//   } catch (error) {
-//     if (error.code === "ECONNRESET") {
-//       console.error("Connection reset error. Check your network and retry.");
-//     } else {
-//       console.error("An error occurred:", error);
-//     }
-//   }
-//   try {
 async function getUserData(username, res) {
   try {
     const leetcode = new LeetCode();
@@ -60,17 +48,3 @@ const uniqueSubmissions = () => {
   }
   return acceptedSubmission;
 };
-
-// getUserData();
-// const showSubmisions = () => {
-//   const acceptedSubmission = [];
-//   for (const submission of recentSubmissions) {
-//     if (submission.statusDisplay === "Accepted") {
-//       const title = submission.title;
-//       if (!acceptedSubmission.includes(title)) {
-//         acceptedSubmission.push(title);
-//       }
-//     }
-//   }
-//   console.log(acceptedSubmission);
-// };
